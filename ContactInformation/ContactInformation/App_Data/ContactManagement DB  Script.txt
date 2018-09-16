@@ -1,0 +1,46 @@
+﻿USE [master]
+GO
+
+/****** Object:  Database [ContactManagement]    Script Date: 9/15/2018 10:47:59 AM ******/
+CREATE DATABASE [ContactManagement]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'ContactManagement', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL12.MSSQLSERVER\MSSQL\DATA\ContactManagement.mdf' , SIZE = 4096KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
+ LOG ON 
+( NAME = N'ContactManagement_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL12.MSSQLSERVER\MSSQL\DATA\ContactManagement_log.ldf' , SIZE = 1024KB , MAXSIZE = 2048GB , FILEGROWTH = 10%)
+GO
+
+ALTER DATABASE [ContactManagement] SET COMPATIBILITY_LEVEL = 120
+GO
+
+
+USE [ContactManagement]
+GO
+
+/****** Object:  Table [dbo].[Contact]    Script Date: 9/15/2018 10:48:09 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[Contact](
+	[ContactID] [int] IDENTITY(1,1) NOT NULL,
+	[FirstName] [varchar](50) NULL,
+	[LastName] [varchar](50) NULL,
+	[PhoneNumber] [varchar](20) NULL,
+	[Email] [varchar](200) NULL,
+	[IsActive] [bit] NULL DEFAULT ((1)),
+ CONSTRAINT [PK_Contact] PRIMARY KEY CLUSTERED 
+(
+	[ContactID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
